@@ -76,10 +76,9 @@ export default NextAuth({
             )
           )
         )
-
-        return true
+        return true;
       } catch (err) {
-        return false
+        return false;
       }
 
     },
