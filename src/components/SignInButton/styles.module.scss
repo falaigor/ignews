@@ -12,8 +12,6 @@
   color: var(--white);
   font-weight: bold;
 
-  transition: filter 0.2s;
-
   svg {
     width: 20px;
     height: 20px;
@@ -27,7 +25,9 @@
     margin-left: 1rem;
   }
 
+  transition: filter 0.2s;
+
   &:hover {
-    filter: brightness(0.8)
+    filter: brightness(0.8);
   }
 }

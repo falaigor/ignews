@@ -8,6 +8,7 @@
   height: 5rem;
   margin: 0 auto;
   padding: 0 2rem;
+
   display: flex;
   align-items: center;
 
@@ -22,6 +23,7 @@
       height: 5rem;
       line-height: 5rem;
       color: var(--gray-300);
+
       transition: color 0.2s;
 
       & + a {
@@ -33,8 +35,8 @@
       }
 
       &.active {
-        font-weight: bold;
         color: var(--white);
+        font-weight: bold;
       }
 
       &.active::after {
@@ -49,7 +51,7 @@
       }
     }
   }
-  
+
   button {
     margin-left: auto;
   }

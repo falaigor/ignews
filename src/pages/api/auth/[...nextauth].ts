@@ -1,7 +1,7 @@
-import { query as q } from 'faunadb';
+import { query as q } from 'faunadb'
 
-import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import NextAuth from 'next-auth'
+import Providers from 'next-auth/providers'
 
 import { fauna } from '../../../services/fauna';
 
@@ -38,7 +38,7 @@ export default NextAuth({
             ])
           )
         )
-
+  
         return {
           ...session,
           activeSubscription: userActiveSubscription
@@ -46,7 +46,7 @@ export default NextAuth({
       } catch {
         return {
           ...session,
-          activeSubscription: null
+          activeSubscription: null,
         }
       }
     },
@@ -76,11 +76,11 @@ export default NextAuth({
             )
           )
         )
-        return true;
-      } catch (err) {
-        return false;
-      }
 
+        return true
+      } catch {
+        return false
+      }
     },
   }
 })

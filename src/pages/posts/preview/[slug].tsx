@@ -1,27 +1,27 @@
-import { GetStaticPaths, GetStaticProps } from "next"
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/client";
-import Head from 'next/head';
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { RichText } from "prismic-dom"
+import { RichText } from "prismic-dom";
 import { useEffect } from "react";
 
-import { getPrismicClient } from "../../../services/prismic"
+import { getPrismicClient } from "../../../services/prismic";
 
-import styles from '../post.module.scss'
+import styles from '../post.module.scss';
 
 interface PostPreviewProps {
   post: {
-    slug: string,
-    title: string,
-    content: string,
-    updatedAt: string,
+    slug: string;
+    title: string;
+    content: string;
+    updatedAt: string;
   }
 }
 
 export default function PostPreview({ post }: PostPreviewProps) {
-  const [session] = useSession();
-  const router = useRouter();
+  const [session] = useSession()
+  const router = useRouter()
 
   useEffect(() => {
     if (session?.activeSubscription) {
@@ -32,28 +32,28 @@ export default function PostPreview({ post }: PostPreviewProps) {
   return (
     <>
       <Head>
-        <title>{post.title} | ig.news</title>
+        <title>{post.title} | Ignews</title>
       </Head>
 
       <main className={styles.container}>
         <article className={styles.post}>
           <h1>{post.title}</h1>
           <time>{post.updatedAt}</time>
-
-          <div
+          <div 
             className={`${styles.postContent} ${styles.previewContent}`}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
           <div className={styles.continueReading}>
             Wanna continue reading?
             <Link href="/">
-              <a href="">Subscribe now</a>
+              <a href="">Subscribe now 🤗</a>
             </Link>
           </div>
         </article>
       </main>
     </>
-  )
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -79,12 +79,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       month: 'long',
       year: 'numeric'
     })
-  }
+  };
 
   return {
     props: {
       post,
     },
-    redirect: 60 * 30,
+    redirect: 60 * 30, // 30 minutes
   }
 }
